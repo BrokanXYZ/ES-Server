@@ -69,21 +69,13 @@ public class UserController {
 		return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 	}
 
-	/*@DeleteMapping("/customers/{id}")
-	public ResponseEntity<String> deleteCustomer(@PathVariable("id") UUID id) {
-		System.out.println("Delete Customer with ID = " + id + "...");
+	@DeleteMapping("/user/{id}")
+	public ResponseEntity<String> deleteUser(@PathVariable("id") UUID id) {
+		System.out.println("Delete User with ID = " + id + "...");
 
-		customerRepository.delete(BasicMapId.id("id", id));
+		userRepository.delete(BasicMapId.id("userId", id));
 
-		return new ResponseEntity<>("Customer has been deleted!", HttpStatus.OK);
-	}*/
+		return new ResponseEntity<>("User has been deleted!", HttpStatus.OK);
+	}
 
-	/*@DeleteMapping("/customers/delete")
-	public ResponseEntity<String> deleteAllCustomers() {
-		System.out.println("Delete All Customers...");
-
-		customerRepository.deleteAll();
-
-		return new ResponseEntity<>("All customers have been deleted!", HttpStatus.OK);
-	}*/
 }

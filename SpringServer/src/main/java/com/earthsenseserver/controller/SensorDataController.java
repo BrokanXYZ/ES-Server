@@ -54,22 +54,5 @@ public class SensorDataController {
 		
 		return new ResponseEntity<List<SensorData>>(sensordata, HttpStatus.OK);
 	}
-
-	/*@DeleteMapping("/customers/{id}")
-	public ResponseEntity<String> deleteCustomer(@PathVariable("id") UUID id) {
-		System.out.println("Delete Customer with ID = " + id + "...");
-
-		customerRepository.delete(BasicMapId.id("id", id));
-
-		return new ResponseEntity<>("Customer has been deleted!", HttpStatus.OK);
-	}*/
-
-	/*@DeleteMapping("/customers/delete")
-	public ResponseEntity<String> deleteAllCustomers() {
-		System.out.println("Delete All Customers...");
-
-		customerRepository.deleteAll();
-
-		return new ResponseEntity<>("All customers have been deleted!", HttpStatus.OK);
-	}*/
+	
 }
