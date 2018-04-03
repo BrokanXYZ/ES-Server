@@ -51,20 +51,23 @@ public class UserController {
 		return new ResponseEntity<>(_user, HttpStatus.OK);
 	}
 
-	/*@PutMapping("/customers/{id}")
-	public ResponseEntity<Customer> updateCustomer(@PathVariable("id") UUID id, @RequestBody Customer customer) {
-		System.out.println("Update Customer with ID = " + id + "...");
+	@PutMapping("/user/{id}")
+	public ResponseEntity<User> updateNode(@PathVariable("id") UUID id, @RequestBody User user) {
+		System.out.println("Update User with ID = " + id + "...");
 
-		Customer customerData = customerRepository.findOne(BasicMapId.id("id", id));
-		if (customerData == null) {
+		User userData = userRepository.findOne(BasicMapId.id("userId", id));
+		if (userData == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		customerData.setName(customer.getName());
-		customerData.setAge(customer.getAge());
-		customerData.setActive(customer.isActive());
-		Customer updatedcustomer = customerRepository.save(customerData);
-		return new ResponseEntity<>(updatedcustomer, HttpStatus.OK);
-	}*/
+
+		userData.setPermissionId(user.getPermissionId());
+		userData.setUsername(user.getUsername());
+		userData.setPassword(user.getPassword());
+		userData.setEmail(user.getEmail());
+
+		User updatedUser = userRepository.save(userData);
+		return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+	}
 
 	/*@DeleteMapping("/customers/{id}")
 	public ResponseEntity<String> deleteCustomer(@PathVariable("id") UUID id) {

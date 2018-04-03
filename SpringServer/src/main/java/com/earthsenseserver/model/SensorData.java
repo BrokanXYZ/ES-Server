@@ -22,7 +22,7 @@ public class SensorData {
 	private float sensorReading2;
 	private float sensorReading3;
 
-	
+
 	public SensorData(float sensorReading1, float sensorReading2, float sensorReading3) {
 		this.sensorReading1 = sensorReading1;
 		this.sensorReading2 = sensorReading2;
@@ -44,14 +44,6 @@ public class SensorData {
 	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
-	
-	/*public SensorDataKey getPk() {
-		return pk;
-	}
-
-	public void setPk(SensorDataKey pk) {
-		this.pk = pk;
-	}*/
 
 	public float getSensorReading1() {
 		return sensorReading1;

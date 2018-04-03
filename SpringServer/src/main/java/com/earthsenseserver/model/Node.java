@@ -23,6 +23,7 @@ public class Node {
 	private String country;
 	private int status;
 
+	public Node() {}
 	
 	public Node(UUID owner, String nodeName, float latitude, float longitude, String city, String state, String country) {
 		this.owner = owner;

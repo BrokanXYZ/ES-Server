@@ -68,13 +68,20 @@ public class NodeController {
 	public ResponseEntity<Node> updateNode(@PathVariable("id") UUID id, @RequestBody Node node) {
 		System.out.println("Update Node with ID = " + id + "...");
 
-		Node nodeData = nodeRepository.findOne(BasicMapId.id("id", id));
+		Node nodeData = nodeRepository.findOne(BasicMapId.id("nodeId", id));
 		if (nodeData == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		nodeData.setName(customer.getName());
-		nodeData.setAge(customer.getAge());
-		nodeData.setActive(customer.isActive());
+
+		nodeData.setOwner(node.getOwner());
+		nodeData.setNodeName(node.getNodeName());
+		nodeData.setLatitude(node.getLatitude());
+		nodeData.setLongitude(node.getLongitude());
+		nodeData.setCity(node.getCity());
+		nodeData.setState(node.getState());
+		nodeData.setCountry(node.getCountry());
+		nodeData.setStatus(node.getStatus());
+
 		Node updatedNode = nodeRepository.save(nodeData);
 		return new ResponseEntity<>(updatedNode, HttpStatus.OK);
 	}

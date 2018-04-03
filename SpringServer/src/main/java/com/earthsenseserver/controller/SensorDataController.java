@@ -55,33 +55,6 @@ public class SensorDataController {
 		return new ResponseEntity<List<SensorData>>(sensordata, HttpStatus.OK);
 	}
 
-	@PostMapping("/sensordata/create")
-	public ResponseEntity<SensorData> createSensorData(@Valid @RequestBody SensorData sensordata) {
-		//System.out.println("Creating Sensor Data for : " + sensordata.getPk().getNodeId());
-		
-		// **
-		// DO NOT HAVE PK DATA!!!!
-		// **
-		
-		SensorData _sensordata = sensorDataRepository.save(sensordata);
-		return new ResponseEntity<>(_sensordata, HttpStatus.OK);
-	}
-
-	/*@PutMapping("/customers/{id}")
-	public ResponseEntity<Customer> updateCustomer(@PathVariable("id") UUID id, @RequestBody Customer customer) {
-		System.out.println("Update Customer with ID = " + id + "...");
-
-		Customer customerData = customerRepository.findOne(BasicMapId.id("id", id));
-		if (customerData == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		customerData.setName(customer.getName());
-		customerData.setAge(customer.getAge());
-		customerData.setActive(customer.isActive());
-		Customer updatedcustomer = customerRepository.save(customerData);
-		return new ResponseEntity<>(updatedcustomer, HttpStatus.OK);
-	}*/
-
 	/*@DeleteMapping("/customers/{id}")
 	public ResponseEntity<String> deleteCustomer(@PathVariable("id") UUID id) {
 		System.out.println("Delete Customer with ID = " + id + "...");

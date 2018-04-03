@@ -16,6 +16,7 @@ public class User {
 	private String password;
 	private String email;
 
+	public User(){}
 	
 	public User(int permissionId, String username, String password, String email) {
 		this.permissionId = permissionId;
