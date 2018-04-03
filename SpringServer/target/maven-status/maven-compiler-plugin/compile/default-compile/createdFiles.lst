@@ -1,0 +1,11 @@
+com/earthsenseserver/model/User.class
+com/earthsenseserver/repo/NodeRepository.class
+com/earthsenseserver/repo/UserRepository.class
+com/earthsenseserver/repo/SensorDataRepository.class
+com/earthsenseserver/model/SensorDataKey.class
+com/earthsenseserver/model/SensorData.class
+com/earthsenseserver/StartApplication.class
+com/earthsenseserver/model/Node.class
+com/earthsenseserver/controller/UserController.class
+com/earthsenseserver/controller/SensorDataController.class
+com/earthsenseserver/controller/NodeController.class

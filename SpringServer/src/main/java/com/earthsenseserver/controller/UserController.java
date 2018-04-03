@@ -24,7 +24,7 @@ import com.datastax.driver.core.utils.UUIDs;
 import com.earthsenseserver.model.User;
 import com.earthsenseserver.repo.UserRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://10.9.1.100:4200")
 @RestController
 @RequestMapping("/api")
 public class UserController {

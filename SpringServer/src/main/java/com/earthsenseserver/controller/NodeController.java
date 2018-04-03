@@ -24,7 +24,7 @@ import com.datastax.driver.core.utils.UUIDs;
 import com.earthsenseserver.model.Node;
 import com.earthsenseserver.repo.NodeRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://10.9.1.100:4200")
 @RestController
 @RequestMapping("/api")
 public class NodeController {
@@ -41,6 +41,18 @@ public class NodeController {
 		return nodes;
 	}
 
+	@GetMapping("/node/{id}")
+	public ResponseEntity<Node> getOneNode(@PathVariable("id") UUID id) {
+		System.out.println("Getting node with ID = " + id + "...");
+
+		Node nodeData = nodeRepository.findOne(BasicMapId.id("nodeId", id));
+		if (nodeData == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<>(nodeData, HttpStatus.OK);
+	}
+	
 	@PostMapping("/node/create")
 	public ResponseEntity<Node> createNode(@Valid @RequestBody Node node) {
 		System.out.println("Creating Node: " + node.getNodeName());
