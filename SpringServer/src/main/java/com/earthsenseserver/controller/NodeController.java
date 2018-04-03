@@ -64,20 +64,20 @@ public class NodeController {
 		return new ResponseEntity<>(_node, HttpStatus.OK);
 	}
 
-	/*@PutMapping("/customers/{id}")
-	public ResponseEntity<Customer> updateCustomer(@PathVariable("id") UUID id, @RequestBody Customer customer) {
-		System.out.println("Update Customer with ID = " + id + "...");
+	@PutMapping("/node/{id}")
+	public ResponseEntity<Node> updateNode(@PathVariable("id") UUID id, @RequestBody Node node) {
+		System.out.println("Update Node with ID = " + id + "...");
 
-		Customer customerData = customerRepository.findOne(BasicMapId.id("id", id));
-		if (customerData == null) {
+		Node nodeData = nodeRepository.findOne(BasicMapId.id("id", id));
+		if (nodeData == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		customerData.setName(customer.getName());
-		customerData.setAge(customer.getAge());
-		customerData.setActive(customer.isActive());
-		Customer updatedcustomer = customerRepository.save(customerData);
-		return new ResponseEntity<>(updatedcustomer, HttpStatus.OK);
-	}*/
+		nodeData.setName(customer.getName());
+		nodeData.setAge(customer.getAge());
+		nodeData.setActive(customer.isActive());
+		Node updatedNode = nodeRepository.save(nodeData);
+		return new ResponseEntity<>(updatedNode, HttpStatus.OK);
+	}
 
 	/*@DeleteMapping("/customers/{id}")
 	public ResponseEntity<String> deleteCustomer(@PathVariable("id") UUID id) {

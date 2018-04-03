@@ -45,11 +45,6 @@ public class SensorDataController {
 	@GetMapping("/sensordata/{id}")
 	public ResponseEntity<List<SensorData>> getOneSensorData(@PathVariable("id") UUID id) {
 		System.out.println("Getting all sensor-data for node with ID = " + id + "...");
-
-		//List<SensorData> sensordata = new ArrayList<>();
-		//sensorDataRepository.findAll(BasicMapId.id("nodeId", id)).forEach(sensordata::add);
-		
-		//SensorData sensordata = sensorDataRepository.findOne(BasicMapId.id("nodeId", id));
 		
 		List<SensorData> sensordata = sensorDataRepository.findByNodeId(id);
 		

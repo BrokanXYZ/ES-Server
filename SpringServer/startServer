@@ -1,0 +1,3 @@
+#!/bin/sh
+
+nohup java -jar target/ES-SpringServer-0.2.jar --server.port=3000 &
