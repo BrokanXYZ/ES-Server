@@ -1,5 +1,9 @@
 import socket
 import threading
+import uuid
+from datetime import datetime
+from decimal import Decimal
+from cassandra.cluster import Cluster
 
 class ThreadedServer(object):
     def __init__(self, host, port):
@@ -20,25 +24,50 @@ class ThreadedServer(object):
         size = 1024
         while True:
             try:
-                data = client.recv(size)
-                print("Data from ", address, ": ", data.decode("utf-8"))
-                if data:
-                    # Set the response to echo back the recieved data
-                    response = data
+                # Data Format (CSV)
+                #   0. NodeId
+                #   1. Timestamp
+                #   2. Altitude
+                #   3. Humidity
+                #   4. Pressure
+                #   5. Temperature
+                
+                # Decode and split data
+                data = client.recv(size).decode("utf-8").split(",");
+
+                # Else data is not in the correct format
+                if len(data) == 6:
+
+                    # Log Message
+                    print(datetime.now()) 
+                    print("     Data recieved from...")
+                    print("         Address: ", address)
+                    print("         NodeId:  ", data[0])
+
+                    # Connect to Cassandra
+                    cluster = Cluster();
+                    session = cluster.connect('earthsense')
+
+
+                    # Insert data into SensorData table
+                    session.execute(
+                        """
+                        INSERT INTO sensordata (nodeid, timestamp, altitude, humidity, pressure, temp)
+                        VALUES (%s, %s, %s, %s, %s, %s)
+                        """,
+                        (uuid.UUID(data[0]), datetime.fromtimestamp(Decimal(data[1])), Decimal(data[2]), Decimal(data[3]), Decimal(data[4]), Decimal(data[5]))
+                    )
+
+                    # Let client know data has been successfully submitted
                     client.send(b'ACK')
+
+
                 else:
-                    raise error('Client disconnected')
+                    client.send(b'ERROR: Incorrect data format.')
+
             except:
                 client.close()
                 return False
 
 if __name__ == "__main__":
-    while True:
-        port_num = input("Port? ")
-        try:
-            port_num = int(port_num)
-            break
-        except ValueError:
-            pass
-
-    ThreadedServer('',port_num).listen()
+    ThreadedServer('',5005).listen()
