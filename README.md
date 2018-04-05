@@ -1,5 +1,5 @@
 # ES-Server
-
+Capstone 2017 - 2018 project
 
 ### SpringServer
 A Spring Data application written in Java. Acts as a RESTful API that allows web clients to interact with the Cassandra database.
