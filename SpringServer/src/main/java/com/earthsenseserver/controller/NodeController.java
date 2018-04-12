@@ -24,7 +24,7 @@ import com.datastax.driver.core.utils.UUIDs;
 import com.earthsenseserver.model.Node;
 import com.earthsenseserver.repo.NodeRepository;
 
-@CrossOrigin(origins = "http://10.9.1.100:4200")
+@CrossOrigin(origins = {"http://10.9.1.100:4200", "http://127.0.0.1:4200"})
 @RestController
 @RequestMapping("/api")
 public class NodeController {

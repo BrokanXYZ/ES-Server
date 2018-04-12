@@ -25,7 +25,7 @@ import com.earthsenseserver.model.SensorData;
 import com.earthsenseserver.model.SensorDataKey;
 import com.earthsenseserver.repo.SensorDataRepository;
 
-@CrossOrigin(origins = "http://10.9.1.100:4200")
+@CrossOrigin(origins = {"http://10.9.1.100:4200", "http://127.0.0.1:4200"})
 @RestController
 @RequestMapping("/api")
 public class SensorDataController {
