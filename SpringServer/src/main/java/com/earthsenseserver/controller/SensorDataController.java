@@ -25,7 +25,7 @@ import com.earthsenseserver.model.SensorData;
 import com.earthsenseserver.model.SensorDataKey;
 import com.earthsenseserver.repo.SensorDataRepository;
 
-@CrossOrigin(origins = {"http://10.9.1.100:4200", "http://127.0.0.1:4200"})
+@CrossOrigin /*(origins = {"http://10.9.1.100:3000", "http://127.0.0.1:3000"})*/
 @RestController
 @RequestMapping("/api")
 public class SensorDataController {
@@ -41,18 +41,18 @@ public class SensorDataController {
 		sensorDataRepository.findAll().forEach(sensordata::add);
 		return sensordata;
 	}
-	
+
 	@GetMapping("/sensordata/{id}")
 	public ResponseEntity<List<SensorData>> getOneSensorData(@PathVariable("id") UUID id) {
 		System.out.println("Getting all sensor-data for node with ID = " + id + "...");
-		
+
 		List<SensorData> sensordata = sensorDataRepository.findByNodeId(id);
-		
+
 		if (sensordata == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		
+
 		return new ResponseEntity<List<SensorData>>(sensordata, HttpStatus.OK);
 	}
-	
+
 }

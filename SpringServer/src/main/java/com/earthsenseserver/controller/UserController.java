@@ -24,7 +24,7 @@ import com.datastax.driver.core.utils.UUIDs;
 import com.earthsenseserver.model.User;
 import com.earthsenseserver.repo.UserRepository;
 
-@CrossOrigin(origins = {"http://10.9.1.100:4200", "http://127.0.0.1:4200"})
+@CrossOrigin /*(origins = {"http://10.9.1.100:3000", "http://127.0.0.1:3000"})*/
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -41,12 +41,12 @@ public class UserController {
 		return user;
 	}
 
-	@PostMapping("/user/create")
+	@PostMapping(path="/user/create", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
 		System.out.println("Creating User : " + user.getUsername());
-		
+
 		user.setUserId(UUIDs.timeBased());
-		
+
 		User _user = userRepository.save(user);
 		return new ResponseEntity<>(_user, HttpStatus.OK);
 	}

@@ -18,15 +18,17 @@ public class SensorData {
 	@PrimaryKeyColumn(name = "timestamp", ordinal = 1, type = PrimaryKeyType.CLUSTERED, ordering = Ordering.DESCENDING)
 	private Date timestamp;
 	
-	private float sensorReading1;
-	private float sensorReading2;
-	private float sensorReading3;
+	private float altitude;
+	private float humidity;
+	private float pressure;
+	private float temp;
 
 
-	public SensorData(float sensorReading1, float sensorReading2, float sensorReading3) {
-		this.sensorReading1 = sensorReading1;
-		this.sensorReading2 = sensorReading2;
-		this.sensorReading3 = sensorReading3;
+	public SensorData(float altitude, float humidity, float pressure, float temp) {
+		this.altitude = altitude;
+		this.humidity = humidity;
+		this.pressure = pressure;
+		this.temp = temp;
 	}
 	
 	public UUID getNodeId() {
@@ -45,34 +47,41 @@ public class SensorData {
 		this.timestamp = timestamp;
 	}
 
-	public float getSensorReading1() {
-		return sensorReading1;
+	public float getAltitude() {
+		return altitude;
 	}
 
-	public void setSensorReading1(float sensorReading1) {
-		this.sensorReading1 = sensorReading1;
+	public void setAltitude(float altitude) {
+		this.altitude = altitude;
 	}
 	
-	public float getSensorReading2() {
-		return sensorReading2;
+	public float getHumidity() {
+		return humidity;
 	}
 
-	public void setSensorReading2(float sensorReading2) {
-		this.sensorReading2 = sensorReading2;
+	public void setHumidity(float humidity) {
+		this.humidity = humidity;
 	}
 	
-	public float getSensorReading3() {
-		return sensorReading3;
+	public float getPressure() {
+		return pressure;
 	}
 
-	public void setSensorReading3(float sensorReading3) {
-		this.sensorReading3 = sensorReading3;
+	public void setPressure(float pressure) {
+		this.pressure = pressure;
 	}
 	
+	public float getTemp() {
+		return temp;
+	}
+
+	public void setTemp(float temp) {
+		this.temp = temp;
+	}
 
 	@Override
 	public String toString() {
-		/*return "SensorData [nodeId=" + pk.getNodeId() + ", timestamp=" + pk.getTimestamp() + ", sensorReading1=" + sensorReading1 + ", sensorReading2=" + sensorReading2 + ", sensorReading3=" + sensorReading3 + "]";*/
+		/*return "SensorData [nodeId=" + pk.getNodeId() + ", timestamp=" + pk.getTimestamp() + ", altitude=" + altitude + ", humidity=" + humidity + ", pressure=" + pressure + "]";*/
 		return "NEED TO REDO THIS";
 	}
 }
