@@ -22,13 +22,17 @@ public class SensorData {
 	private float humidity;
 	private float pressure;
 	private float temp;
+	private float latitude;
+	private float longitude;
 
 
-	public SensorData(float altitude, float humidity, float pressure, float temp) {
+	public SensorData(float altitude, float humidity, float pressure, float temp, float latitude, float longitude) {
 		this.altitude = altitude;
 		this.humidity = humidity;
 		this.pressure = pressure;
 		this.temp = temp;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 	
 	public UUID getNodeId() {
@@ -78,10 +82,21 @@ public class SensorData {
 	public void setTemp(float temp) {
 		this.temp = temp;
 	}
-
-	@Override
-	public String toString() {
-		/*return "SensorData [nodeId=" + pk.getNodeId() + ", timestamp=" + pk.getTimestamp() + ", altitude=" + altitude + ", humidity=" + humidity + ", pressure=" + pressure + "]";*/
-		return "NEED TO REDO THIS";
+	
+	public float getLongitude() {
+		return longitude;
 	}
+
+	public void setLongitude(float longitude) {
+		this.longitude = longitude;
+	}
+	
+	public float getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
+	}
+	
 }

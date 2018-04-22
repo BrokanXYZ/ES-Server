@@ -31,12 +31,14 @@ class ThreadedServer(object):
                 #   3. Humidity
                 #   4. Pressure
                 #   5. Temperature
+				#	6. Latitude
+				#	7. Longitude
                 
                 # Decode and split data
                 data = client.recv(size).decode("utf-8").split(",");
 
                 # Else data is not in the correct format
-                if len(data) == 6:
+                if len(data) == 8:
 
                     # Log Message
                     print(datetime.now()) 
@@ -52,10 +54,10 @@ class ThreadedServer(object):
                     # Insert data into SensorData table
                     session.execute(
                         """
-                        INSERT INTO sensordata (nodeid, timestamp, altitude, humidity, pressure, temp)
-                        VALUES (%s, %s, %s, %s, %s, %s)
+                        INSERT INTO sensordata (nodeid, timestamp, altitude, humidity, pressure, temp, latitude, longitude)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                         """,
-                        (uuid.UUID(data[0]), datetime.fromtimestamp(Decimal(data[1])), Decimal(data[2]), Decimal(data[3]), Decimal(data[4]), Decimal(data[5]))
+                        (uuid.UUID(data[0]), datetime.fromtimestamp(Decimal(data[1])), Decimal(data[2]), Decimal(data[3]), Decimal(data[4]), Decimal(data[5]), Decimal(data[6]), Decimal(data[7]))
                     )
 
                     # Let client know data has been successfully submitted
