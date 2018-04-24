@@ -33,7 +33,7 @@ class ThreadedServer(object):
                 #   5. Temperature
 				#	6. Latitude
 				#	7. Longitude
-                
+
                 # Decode and split data
                 data = client.recv(size).decode("utf-8").split(",");
 
@@ -45,6 +45,7 @@ class ThreadedServer(object):
                     print("     Data recieved from...")
                     print("         Address: ", address)
                     print("         NodeId:  ", data[0])
+                    print(data[0], ", ",data[1], ", ",data[2], ", ",data[3], ", ",data[4], ", ",data[5], ", ",data[6], ", ",data[7])
 
                     # Connect to Cassandra
                     cluster = Cluster();
