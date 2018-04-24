@@ -1,3 +1,8 @@
 #!/bin/sh
 
-nohup java -jar target/ES-SpringServer-0.2.jar --server.port=3000 &
+if pgrep -f "java -jar target/ES-SpringServer-0.2.jar --server.port=3000" > /dev/null 2>&1; then
+	echo "\nERROR: Spring server is already running\n"
+else
+	nohup java -jar target/ES-SpringServer-0.2.jar --server.port=3000 & > /dev/null 2>&1
+	echo "\nSpring server is starting up! (approx. 15 sec till operational)\n"
+fi

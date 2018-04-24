@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if pgrep -f "python3 tcpServer.py" > /dev/null 2>&1; then
+	kill $(ps aux | grep '[p]ython3 tcpServer.py' | awk '{print $2}') >/dev/null 2>&1
+	echo "\nTCP server stopped!\n"
+else
+	echo "\nERROR: TCP server is not running\n"
+fi
+

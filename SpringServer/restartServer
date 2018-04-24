@@ -1,3 +1,0 @@
-#!/bin/sh
-
-kill $(ps aux | grep '[s]erver.port=3000' | awk '{print $2}') && mvn package && nohup java -jar target/ES-SpringServer-0.2.jar --server.port=3000 &

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if pgrep -f "java -jar target/ES-SpringServer-0.2.jar --server.port=3000" > /dev/null 2>&1; then
+	./stopServer && ./compileServer && ./startServer
+else
+	echo "\nERROR: Spring server is not running\n"
+fi

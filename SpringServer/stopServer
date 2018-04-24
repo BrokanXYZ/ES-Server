@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if pgrep -f "java -jar target/ES-SpringServer-0.2.jar --server.port=3000" > /dev/null 2>&1; then
+	kill $(ps aux | grep '[s]erver.port=3000' | awk '{print $2}') >/dev/null 2>&1
+	echo "\nSpring server stopped!\n"
+else
+	echo "\nERROR: Spring server is not running\n"
+fi
+

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if pgrep -f "python3 tcpServer.py" > /dev/null 2>&1; then
+	echo "\nERROR: TCP server is already running\n"
+else
+	nohup python3 tcpServer.py & > /dev/null 2>&1
+	echo "\nTCP server is up on port 5005!\n"
+fi

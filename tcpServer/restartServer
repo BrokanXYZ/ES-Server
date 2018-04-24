@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if pgrep -f "python3 tcpServer.py" > /dev/null 2>&1; then
+	./stopServer && ./startServer
+else
+	echo "\nERROR: TCP server is not running\n"
+fi
