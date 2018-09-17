@@ -1,5 +1,5 @@
 # ES-Server
-Capstone 2017 - 2018 project
+These are my contributions to the Earthsense project. I was tasked with working on everything back-end. I configured and maintained the VM and DB, wrote a simple TCP server that collects data from our air quality sensors, and developed a REST API with Spring Boot that allows app users to use our collected data.
 
 ### SpringServer
 A Spring Data application written in Java. Acts as a RESTful API that allows web clients to interact with the Cassandra database.
